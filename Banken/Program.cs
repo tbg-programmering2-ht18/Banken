@@ -11,7 +11,6 @@ namespace Banken
 
         static void Main(string[] args)
         {
-
             //Lista för kundernas Namn och pengar.
             List<Kund> list = new List<Kund>();
 
@@ -30,13 +29,14 @@ namespace Banken
 
 
 
-            while (val != 7) {
+            while (val != 7)
+            {
                 switch (val)
                 {
                     case 1:
                         //Mata in kunders Namn.
                         Console.WriteLine(" Mata in en kund");
-                        Kund kund1 = new Kund();   
+                        Kund kund1 = new Kund();
                         kund1.namn = Console.ReadLine();
                         list.Add(kund1);
                         break;
@@ -49,7 +49,7 @@ namespace Banken
                         Kund kund = null;
                         foreach (Kund info in list)
                         {
-                            if ( info.namn == Namn)
+                            if (info.namn == Namn)
                             {
                                 kund = info;
                             }
@@ -77,7 +77,7 @@ namespace Banken
                                 kund = info;
                             }
                         }
-                        Console.WriteLine(kund.saldo);
+                        Console.WriteLine(Saldo);
                         break;
 
                     case 5:
@@ -88,14 +88,16 @@ namespace Banken
                         Console.WriteLine("Hur mycket pengar vill du ta ut?");
                         break;
 
-                        
+
                     case 7:
                         //För att kunna stänga programmet.
                         Console.WriteLine("DU valde 7 för att stänga programet");
                         break;
                 }
-                 val = int.Parse(Console.ReadLine());
+                val = int.Parse(Console.ReadLine());
             }
+
+
         }
     }
 }
