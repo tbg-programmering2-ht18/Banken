@@ -16,5 +16,10 @@ namespace Banken
         {
             return namn;
         }
+
+        internal string showkund()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

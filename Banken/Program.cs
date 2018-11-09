@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Banken
             //Lista för kundernas Namn och pengar.
             List<Kund> list = new List<Kund>();
 
+            ///läs från fil och lägg in i list (dvs listan av kunder)
+            bank(list);
             //alternativ frågor till användaren.  
             Console.WriteLine("Välkommern till 'Banken som man ska inte lita på' ");
             Console.WriteLine();
@@ -62,14 +65,14 @@ namespace Banken
                         Console.WriteLine("Alla befintliga Kunder...");
                         foreach (Kund info in list)
                         {
-                            Console.WriteLine(info.Visakund());
+                            File.WriteAllText(Filename, info.showkund());
                         }
                         break;
 
                     case 4:
                         Console.WriteLine("Vilken kunds saldo vill du se?");
                         int Saldo = int.Parse(Console.ReadLine());
-                        Kund kund = null;
+                        Kund saldo = null;
                         foreach (Kund info in list)
                         {
                             if (info.saldo == Saldo)
@@ -97,7 +100,31 @@ namespace Banken
                 val = int.Parse(Console.ReadLine());
             }
 
+        }
 
+        static void WriteFile(string Filename,  List<Kund> list)
+        {
+            foreach (Kund info in list)
+            {
+                Console.WriteLine(info.Visakund());
+            }
+
+        }
+
+        static void ReadFile(string Filename)
+        {
+            string text = File.ReadAllText(Filename);
+
+        }
+
+        static void bank(List<Kund> list)
+        {
+            string Filename = @"C:\bank.filhantering\kunder.txt";
+
+            WriteFile(Filename);
+            ReadFile(Filename);
+
+            Console.ReadKey();
         }
     }
 }
