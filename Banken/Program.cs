@@ -123,7 +123,7 @@ namespace Banken
     
 
             WriteFile(Filename, list);
-            ReadFile(Filename);
+            ReadFile(Filename); //testcomment
 
             Console.ReadKey();
         }
