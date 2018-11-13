@@ -14,7 +14,9 @@ namespace Banken
         {
             //Lista för kundernas Namn och pengar.
             List<Kund> list = new List<Kund>();
+            //länken till fil som namn ska sparas på.
             string Filename = @"C:\bank.filhantering\kunder.txt";
+            
             ///läs från fil och lägg in i list (dvs listan av kunder)
             bank(list, Filename);
             //alternativ frågor till användaren.  
@@ -103,6 +105,7 @@ namespace Banken
 
         }
 
+        //Gör så att det gå spara namn i fil som är utanför programmet.  
         static void WriteFile(string Filename,  List<Kund> list)
         {
             foreach (Kund info in list)
@@ -112,18 +115,20 @@ namespace Banken
 
         }
 
+        //Läser fil med namn från programmer som är utanför 
         static void ReadFile(string Filename)
         {
             string text = File.ReadAllText(Filename);
 
         }
 
+        //för att mata in kund och att kunna se om kund är finns i listan.  
         static void bank(List<Kund> list, string Filename )
         {
     
 
             WriteFile(Filename, list);
-            ReadFile(Filename); //testcomment
+            ReadFile(Filename);
 
             Console.ReadKey();
         }
