@@ -14,9 +14,9 @@ namespace Banken
         {
             //Lista för kundernas Namn och pengar.
             List<Kund> list = new List<Kund>();
-
+            string Filename = @"C:\bank.filhantering\kunder.txt";
             ///läs från fil och lägg in i list (dvs listan av kunder)
-            bank(list);
+            bank(list, Filename);
             //alternativ frågor till användaren.  
             Console.WriteLine("Välkommern till 'Banken som man ska inte lita på' ");
             Console.WriteLine();
@@ -63,10 +63,11 @@ namespace Banken
                     case 3:
                         //Att kunna se alla befintliga kunder.
                         Console.WriteLine("Alla befintliga Kunder...");
-                        foreach (Kund info in list)
+                        Console.WriteLine(File.ReadAllText(Filename));
+                        /*foreach (Kund info in list)
                         {
-                            File.WriteAllText(Filename, info.showkund());
-                        }
+                            File.ReadAllText(Filename);
+                        }*/
                         break;
 
                     case 4:
@@ -117,11 +118,11 @@ namespace Banken
 
         }
 
-        static void bank(List<Kund> list)
+        static void bank(List<Kund> list, string Filename )
         {
-            string Filename = @"C:\bank.filhantering\kunder.txt";
+    
 
-            WriteFile(Filename);
+            WriteFile(Filename, list);
             ReadFile(Filename);
 
             Console.ReadKey();
